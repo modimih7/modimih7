@@ -21,11 +21,11 @@
     sudo systemctl start td-agent-bit
     sudo systemctl enable td-agent-bit
     sudo systemctl status td-agent-bit
-# How to ubuntu server log move to aws cloudwatch in fluentbit.
+# How to ubuntu server log move to aws cloudwatch in fluent-bit.
 
 => Following content at bottom of your /etc/td-agent-bit/td-agent-bit.conf file.
 
-=> Example:-
+=> Example of td-agent-bit config file.
 
 [INPUT]
 
@@ -55,7 +55,7 @@
 - Environment=HOME=/home/ubuntu
 - Environment=AWS_SHARED_CREDENTIALS_FILE=/home/ubuntu/.aws/credentials
 
-=> Example:-
+=> Example of td-agent-service file.
 
 [Unit]
 
@@ -82,7 +82,9 @@
     sudo systemctl status td-agent-bit
     sudo journalctl -fu td-agent-bit (log check command)
 
-=> Error log filter configuration
+=> Error log filter configuration.
+
+=> Example:-
 
 [INPUT]
 
