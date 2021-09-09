@@ -55,7 +55,7 @@
 - Environment=HOME=/home/ubuntu
 - Environment=AWS_SHARED_CREDENTIALS_FILE=/home/ubuntu/.aws/credentials
 
-=> Example of td-agent-service file.
+=> Example of td-agent-service file (directory for the service file /lib/systemd/system)
 
 [Unit]
 
