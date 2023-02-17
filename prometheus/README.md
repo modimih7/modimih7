@@ -57,4 +57,7 @@
 
 => As we can see the Prometheus dashboards, we can also check the target.As we can observe Current state is UP and we can also see the last scrape.
 
+![prometheus1](https://user-images.githubusercontent.com/89242355/219641794-0c4890d5-ba94-40dd-97ad-b094bc0cd0dc.png)
+
+
 
