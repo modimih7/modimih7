@@ -53,6 +53,7 @@
     http://server-IP-or-Hostname:9090.
 
 <!-- ![prometheus](./prometheus.png) -->
+![promethus](https://user-images.githubusercontent.com/89242355/219640535-cb45c7d3-abda-42a1-b7d8-5358f0a79c27.png)
 
 => As we can see the Prometheus dashboards, we can also check the target.As we can observe Current state is UP and we can also see the last scrape.
 
