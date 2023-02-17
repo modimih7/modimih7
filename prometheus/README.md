@@ -60,6 +60,11 @@
 ![prometheus1](https://user-images.githubusercontent.com/89242355/219641794-0c4890d5-ba94-40dd-97ad-b094bc0cd0dc.png)
 
 => Here are some snapshots of Prometheus dashboards and graphs.
+![prometheus2](https://user-images.githubusercontent.com/89242355/219647294-4fe14275-c701-490a-8204-995ad60f4bde.png)
+
+
+![prometheus4](https://user-images.githubusercontent.com/89242355/219647327-36303edd-36ab-4173-bfb5-f7430f96c7c8.png)
+
 
 
 
