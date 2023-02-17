@@ -53,3 +53,5 @@
     http://server-IP-or-Hostname:9090.
 
 <!-- ![prometheus](./prometheus.png) -->
+![promethus](https://user-images.githubusercontent.com/89242355/219634366-f80a43c2-d794-41c5-913f-dd8c9ee86c41.png)
+
