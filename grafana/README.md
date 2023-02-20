@@ -64,8 +64,8 @@
 
 => Default logins are:
 
-#### Username: admin
-#### Password: admin
+     Username: admin
+     Password: admin
 
 => Remember to change admin password from default admin. Login and navigate to:
 
