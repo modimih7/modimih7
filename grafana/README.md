@@ -59,3 +59,5 @@
 ## Step 6 - Access Grafana Dashboard on Ubuntu
 
 => Access Grafana Dashboard using the server IP address or hostname and port 3000.
+![grafana](https://user-images.githubusercontent.com/89242355/220085851-94547924-2426-4400-b017-ff194684862a.png)
+
