@@ -2,25 +2,25 @@
 
 => The first step is to add our server GPG key to your keyring, on that way you can get our signed packages.
 
-    sudo wget -qO - https://packages.fluentbit.io/fluentbit.key | sudo apt-key add
+    - sudo wget -qO - https://packages.fluentbit.io/fluentbit.key | sudo apt-key add
 
 => On Ubuntu, you need to add our APT server entry to your sources lists, please add the following content at bottom of your /etc/apt/sources.list file.
 
-    deb https://packages.fluentbit.io/ubuntu/focal focal main
+    - deb https://packages.fluentbit.io/ubuntu/focal focal main
 
 => Now let your system update the apt database.
 
-    sudo apt-get update
+    - sudo apt-get update
 
 => Using the following apt-get command you are able now to install the latest td-agent-bit.
 
-    sudo apt-get install td-agent-bit
+    - sudo apt-get install td-agent-bit
 
 => Now the following step is to instruct systemd to enable the service:
 
-    sudo systemctl start td-agent-bit
-    sudo systemctl enable td-agent-bit
-    sudo systemctl status td-agent-bit
+    - sudo systemctl start td-agent-bit
+    - sudo systemctl enable td-agent-bit
+    - sudo systemctl status td-agent-bit
 # How to ubuntu server log move to aws cloudwatch in fluent-bit.
 
 => Following content at bottom of your /etc/td-agent-bit/td-agent-bit.conf file.
@@ -45,10 +45,10 @@
 
 => Add AWS access key id and secret key in the environment variable of td-agent-bit service file.
 
-    sudo apt install awscli
-    aws configure
-    Environment=AWS_ACCESS_KEY_ID=
-    Environment=AWS_SECRET_ACCESS_KEY=
+    - sudo apt install awscli
+    - aws configure
+    - Environment=AWS_ACCESS_KEY_ID=
+    - Environment=AWS_SECRET_ACCESS_KEY=
 
 => This changes for your td-agent-bit service file.
 
@@ -77,10 +77,10 @@
 
 => Now the following step is to instruct systemd to restart the service:
 
-    sudo systemctl daemon-reload
-    sudo systemctl restart td-agent-bit
-    sudo systemctl status td-agent-bit
-    sudo journalctl -fu td-agent-bit (log check command)
+    - sudo systemctl daemon-reload
+    - sudo systemctl restart td-agent-bit
+    - sudo systemctl status td-agent-bit
+    - sudo journalctl -fu td-agent-bit (log check command)
 
 => Error log filter configuration.
 

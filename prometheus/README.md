@@ -10,29 +10,31 @@
 
 ## Step 1 — Your system update and upgrade.
 
-    sudo apt-get update
-    sudo apt-get upgrade
+    - sudo apt-get update
+    - sudo apt-get upgrade
 
 ## Step 2 — Using the following apt-get command you are able now to install the prometheus.
 
-    sudo apt-get install prometheus
+    - sudo apt-get install prometheus
 
 ## Step 3 -  Now the following step is to instruct systemd to enable and start the service.
 
-    sudo systemctl start prometheus
-    sudo systemctl enable prometheus
-    sudo systemctl status prometheus
+    - sudo systemctl start prometheus
+    - sudo systemctl enable prometheus
+    - sudo systemctl status prometheus
+    - sudo journalctl -fu prometheus (log check command)
+
 
 ## Step 4 - Check Prometheus Version
 
-    prometheus --version
-    promtool --version
+    - prometheus --version
+    - promtool --version
 
 ## Step 4 — Prometheus configuration file location.
 
 => In the /etc/prometheus directory, and now for a check your prometheus.yml file in this directory.
 
-    sudo nano /etc/prometheus/prometheus.yml
+    - sudo nano /etc/prometheus/prometheus.yml
 
 => Warning: Prometheus’ configuration file uses the YAML format, which strictly forbids tabs and requires two spaces for indentation. Prometheus will fail to start if the configuration file is incorrectly formatted.
 
@@ -46,7 +48,7 @@
 
 => Use below command to enable prometheus service in firewall
 
-    sudo ufw allow 9090/tcp
+    - sudo ufw allow 9090/tcp
 
 => Now Prometheus service is ready to run and we can access it from any web browser.
 
