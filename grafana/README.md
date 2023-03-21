@@ -60,6 +60,7 @@
 
 => Access Grafana Dashboard using the server IP address or hostname and port 3000.
 
+![newgrafana](https://user-images.githubusercontent.com/89242355/226573567-5625cd6b-dc2f-4b36-a6f0-a6fbd7d52a6f.png)
 
 => Default logins are:
 
