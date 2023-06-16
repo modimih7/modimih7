@@ -1,0 +1,6 @@
+region = "eu-west-2"
+aws_profile = "default"
+instance_type = "c6g.large"
+availability_zone = "eu-west-2c"
+key_name = ""
+vpc_name_for_filter = "testvpc"
