@@ -23,10 +23,10 @@ exports.handler = async (event, context, callback) => {
                     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="theme-color" content="#000000" />
-                    <meta name="description" content="BHManager"  />
+                    <meta name="description" content="test"  />
                     <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.ico" />
                     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-                    <title>BHManager </title>
+                    <title>test</title>
                   </head>
                   <body style="margin: 0px; padding: 0px;">
                     <div style="display: flex; justify-content: center; align-items: center; background-color: #ffff01; width: 100%; height: 100vh; ">
