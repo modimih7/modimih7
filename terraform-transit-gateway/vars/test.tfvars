@@ -1,0 +1,5 @@
+region = "eu-west-2"
+aws_profile = "default"
+env = "dev"
+vpc_name_for_filter = "devVPC"
+sharing_account_id = "537064189997"
