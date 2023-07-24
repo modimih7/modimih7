@@ -24,5 +24,5 @@ variable "availability_zone" {
 
 variable "key_name" {
   type = string
-  # default = "rajat-mumbai"    # Don't add .pem at the end of the file name
+  # default = ""    # Don't add .pem at the end of the file name
 }
