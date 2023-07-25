@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"fargate.ecs_task_definition","Source":"git::https://github.com/mongodb/terraform-aws-ecs-task-definition.git","Dir":".terraform/modules/fargate.ecs_task_definition"},{"Key":"","Source":"","Dir":"."},{"Key":"fargate","Source":"./fargate","Dir":"fargate"}]}
