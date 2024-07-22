@@ -2,69 +2,116 @@
 
 ## Introduction
 
-=> Grafana is a multi-platform open source analytics and interactive visualization web application. It provides charts, graphs, and alerts for the web when connected to supported data sources.
+=> Grafana Loki is an open-source, horizontally scalable, highly available, multi-tenant log aggregation system inspired by Prometheus. Unlike other log aggregation systems, Loki is designed to index only the metadata of logs (such as labels), not the full log content.
 
-## Following this steps for Grafana Installation.
+## Following this steps for Grafana Loki Installation.
 
 ## Step 1 — Your system update and upgrade.
 
      sudo apt-get update
      sudo apt-get upgrade
 
-## Step 2 — Add Grafana APT repository
+## Step 2 — Install dependencies:
 
-=> curl -fsSL https://packages.grafana.com/gpg.key|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/grafana.gpg
+=> Ensure you have wget and curl installed:
 
-     sudo apt install -y gnupg2 curl software-properties-common
-     curl -fsSL https://packages.grafana.com/gpg.key|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/grafana.gpg
+     sudo apt install wget curl -y
 
-=> curl -fsSL https://packages.grafana.com/gpg.key|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/grafana.gpg
+## Step 3 - Download and install Loki:
 
-     sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
+=> Download the latest version of Loki from the official Loki releases page. Replace v2.8.2 with the latest version if necessary.
 
-## Step 3 - Install Grafana on Ubuntu
+     wget https://github.com/grafana/loki/releases/download/v2.8.2/loki-linux-amd64.zip
+     unzip loki-linux-amd64.zip
+     sudo mv loki-linux-amd64 /usr/local/bin/loki
+     sudo chmod +x /usr/local/bin/loki
 
-=> Once the repository is added, proceed to update your Apt repositories and install Grafana.
+## Step 4 - Create a configuration file:
 
-     sudo apt update
-     sudo apt -y install grafana
+=> Create a directory for Loki configuration:
 
-## Step 4 - Now the following step is to instruct systemd to enable and start the service.
+     sudo mkdir /etc/loki
 
-     sudo systemctl enable grafana-server
-     sudo systemctl start grafana-server
-     sudo systemctl status grafana-server
-     sudo journalctl -fu grafana-server (log check command)
+=> Create a configuration file:
+
+     sudo nano /etc/loki/loki-config.yaml
+
+=> Here's a basic example of the configuration:
+
+     auth_enabled: false
+
+     server:
+     http_listen_port: 3100
+
+     ingester:
+     lifecycler:
+     address: 127.0.0.1
+     ring:
+          kvstore:
+          store: inmemory
+          replication_factor: 1
+     final_sleep: 0s
+     chunk_idle_period: 5m
+     chunk_retain_period: 30s
+     max_transfer_retries: 0
+
+     schema_config:
+     configs:
+     - from: 2020-10-24
+          store: boltdb
+          object_store: filesystem
+          schema: v11
+          index:
+          prefix: index_
+          period: 168h
+
+     storage_config:
+     boltdb:
+     directory: /loki/index
+     filesystem:
+     directory: /loki/chunks
+
+     limits_config:
+     enforce_metric_name: false
+     reject_old_samples: true
+     reject_old_samples_max_age: 168h
+
+     chunk_store_config:
+     max_look_back_period: 0s
+
+     table_manager:
+     retention_deletes_enabled: true
+     retention_period: 168h
 
 
-## Step 5 - Open Port on Firewall (Optional)
+## Step 5 - Create Loki directories and set permissions:
 
-=> Grafana default http port is 3000, you’ll need to allow access to this port on the firewall.
+     sudo mkdir -p /loki/index /loki/chunks
+     sudo chown -R $USER:$USER /loki
 
-     sudo apt -y install ufw
+## Step 6 - Create a systemd service:
 
-=> Then enable the firewall service:
+     sudo nano /etc/systemd/system/loki.service
 
-     sudo ufw enable
+=> Add the following content:
 
-=> Open the port on the firewall:
+     [Unit]
+     Description=Loki Service
+     After=network.target
 
-     sudo ufw allow ssh
-     sudo ufw allow 3000/tcp
+     [Service]
+     ExecStart=/usr/local/bin/loki -config.file /etc/loki/loki-config.yaml
+     Restart=on-failure
 
-=> To allow access only from a specific subnet, use:
+     [Install]
+     WantedBy=multi-user.target
 
-     sudo ufw allow from 192.168.50.0/24 to any port 3000
+## Step 7 - Start and enable Loki service:
 
-## Step 6 - Access Grafana Dashboard on Ubuntu
+     sudo systemctl daemon-reload
+     sudo systemctl start loki
+     sudo systemctl enable loki
 
-=> Access Grafana Dashboard using the server IP address or hostname and port 3000.
+## Step 8 - Verify Loki is running:
 
-![newgrafana](https://user-images.githubusercontent.com/89242355/226573567-5625cd6b-dc2f-4b36-a6f0-a6fbd7d52a6f.png)
-
-=> Default logins are:
-
-     Username: admin
-     Password: admin
-
-=> Remember to change admin password from default admin. Login and navigate to:
+     sudo systemctl status loki
